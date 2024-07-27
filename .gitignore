@@ -1,0 +1,16 @@
+# Virtual environment
+healthcare_environment/
+# Alternatively, if your virtual environment is named differently, adjust accordingly:
+# venv/
+# .env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables file
+.env
+
+# Other unwanted files or directories
+*.log
+*.tmp

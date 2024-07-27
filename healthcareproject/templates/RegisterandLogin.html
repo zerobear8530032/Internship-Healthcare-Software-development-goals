@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USER LOGIN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registerandlogin.css') }}" />
+</head>
+
+<body>
+    <header>
+        <h1 class="heading">USER LOGIN</h1>
+        <div class="content-section">
+            {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </header>
+
+    <!-- container div -->
+    <div class="container">
+        <!-- upper button section to select the login or signup form -->
+        <div class="slider"></div>
+        <div class="btn">
+            <a class="login" href="#">Login</a>
+            <a class="signup" href="#">Signup</a>
+        </div>
+
+        <!-- Form section that contains the login and the signup form -->
+        <div class="form-section">
+    <!-- login form -->
+    <div class="login-box">
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {% if form.email.errors %}
+                    {{ form.email(class="email ele", placeholder="Enter Your Email") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="email ele", placeholder="Enter Your Email") }}
+                {% endif %}
+                
+                {% if form.password.errors %}
+                    {{ form.password(class="password ele", placeholder="Enter Your Password") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="password ele", placeholder="Enter Your Password") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="clkbtn") }}
+            </div>
+            <div class="form-group">
+                <small class="text-muted">
+                    <a class="ml-2" href="{{ url_for('register') }}"> Want to Create An Account?</a>
+                </small>
+                <small class="text-muted ml-2">
+                    <a class="ml-2" href="{{ url_for('register') }}"> Forgot Password ?</a>
+                </small>
+            </div>
+        </form>
+    </div>
+
+    <!-- signup form -->
+    <div class="signup-box">
+        
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {% if form.username.errors %}
+                    {{ form.username(class="email ele",placeholder="Enter Your Name") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="email ele",placeholder="Enter Your Name") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {% if form.email.errors %}
+                    {{ form.email(class="email ele",placeholder="Enter Your Email") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="email ele",placeholder="Enter Your Email") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {% if form.password.errors %}
+                    {{ form.password(class="email ele",placeholder="Enter Your Password") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="email ele",placeholder="Enter Your Password") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password(class="email ele",placeholder="Re-Enter your Password") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password(class="email ele",placeholder="Re-Enter your Password") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="clkbtn") }}
+            </div>
+        </fieldset>
+        </form>
+    </div>
+</div>
+
+            <!-- signup form -->
+            <div class="signup-box">
+                <input type="text" class="name ele" placeholder="Enter your name">
+                <input type="email" class="email ele" placeholder="youremail@email.com">
+                <input type="password" class="password ele" placeholder="password">
+                <input type="password" class="password ele" placeholder="Confirm password">
+                <button class="clkbtn">Signup</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/registerandlogin.js') }}"></script>
+</body>
+</html>
