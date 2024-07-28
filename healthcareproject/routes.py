@@ -26,7 +26,7 @@ def register():
         return redirect(url_for('login'))  
     else:
         print("Form validation failed!") 
-    return render_template("RegisterandLogin.html", title="Register", form=form)
+    return render_template("Register.html", title="Register", form=form)
 
 @app.route("/login",methods=['POST','GET'])
 def login():
@@ -41,6 +41,6 @@ def login():
                  return redirect(next_page) if next_page else  redirect(url_for("home"))
             else:     
                 flash('check email and password',"danger")
-    return render_template("RegisterandLogin.html",title="Login",form=form)
+    return render_template("Login.html",title="Login",form=form)
 
 

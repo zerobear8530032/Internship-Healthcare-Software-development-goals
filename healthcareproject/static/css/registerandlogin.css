@@ -8,8 +8,8 @@
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,6 +20,7 @@ body {
 
 header {
     width: 100%;
+    margin: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,6 +30,7 @@ header {
 
 .heading {
     color: green;
+    margin-bottom: 0;
 }
 
 .title {
@@ -36,8 +38,17 @@ header {
     letter-spacing: 1.5px;
 }
 
-.container {
-    height: 600px;
+.regcontainer {
+    height: 750px;
+    width: 500px;
+    background-color: white;
+    box-shadow: 8px 8px 20px rgb(128, 128, 128);
+    position: relative;
+    overflow: hidden;
+}
+
+.logcontainer {
+    height: 520px;
     width: 500px;
     background-color: white;
     box-shadow: 8px 8px 20px rgb(128, 128, 128);
@@ -47,8 +58,9 @@ header {
 
 .btn {
     height: 60px;
-    width: 300px;
+    width: 150px;
     margin: 20px auto;
+    margin-bottom:30px;
     box-shadow: 10px 10px 30px rgb(254, 215, 188);
     border-radius: 50px;
     display: flex;
@@ -74,24 +86,13 @@ header {
     background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));
     position: absolute;
     top: 20px;
-    left: 100px;
-    transition: all 0.5s ease-in-out;
+    left: 180px;
 }
 
 .moveslider {
     left: 250px;
 }
 
-.form-section {
-    height: 500px;
-    width: 1000px;
-    padding: 20px 0;
-    display: flex;
-    position: relative;
-    transition: all 0.5s ease-in-out;
-    justify-content: center; /* Center forms horizontally */
-    align-items: center; /* Center forms vertically */
-}
 
 .form-section-move {
     left: -500px;
@@ -113,9 +114,6 @@ header {
     opacity: 1 !important;
 }
 
-.form-group {
-    margin-bottom: 30px; 
-}
 
 .login-box {
     gap: 20px; /* Adjust the gap between form fields */
@@ -166,7 +164,7 @@ header {
     .title {
         font-size: 15px;
     }
-
+    /* Error message styling */
     .btn {
         height: 50px;
         width: 200px;
@@ -217,7 +215,15 @@ header {
         width: 130px;
         font-size: 19px;
     }
+
 }
+.error {
+    font-size: 18px;
+    padding-top:50px;
+    padding-bottom:50px;
+    color: red;
+}
+
 
 @media screen and (max-width: 320px) {
     .container {
@@ -235,8 +241,8 @@ header {
 
     .btn {
         height: 50px;
-        width: 200px;
-        margin: 20px auto;
+        width: 2000px;
+        /* margin: 20px auto; */
     }
     
     .login,
@@ -246,7 +252,7 @@ header {
 
     .slider {
         height: 50px;
-        width: 100px;
+        width: 200px;
         left: 27px;
     }
     
@@ -273,7 +279,7 @@ header {
         height: 50px;
         width: 220px;
         font-size: 15px;
-        margin-bottom: 15px; /* Space between fields for very small screens */
+        margin-bottom: 15px; 
     }
     
     .clkbtn {
@@ -281,4 +287,11 @@ header {
         width: 130px;
         font-size: 19px;
     }
+}
+.invalid-feedback {
+    color: red;
+}
+.content-section{
+    color:rgb(199, 8, 8);
+    background-color: gainsboro;
 }
