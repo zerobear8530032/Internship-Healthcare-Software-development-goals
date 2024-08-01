@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(231, 231, 231);
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.heading {
+    color: green;
+    margin-bottom: 10px;
+}
+
+.formcontainer{
+    max-width: 500px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 8px 8px 20px rgb(128, 128, 128);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.btn {
+    height: 60px;
+    width: 150px;
+    margin: 20px auto;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));
+    box-shadow: 10px 10px 30px rgb(254, 215, 188);
+}
+
+.login, .signup {
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.ele {
+    height: 50px;
+    width: 100%;
+    max-width: 400px;
+    border: none;
+    background-color: rgb(240, 240, 240);
+    border-radius: 50px;
+    padding-left: 15px;
+    font-size: 16px;
+}
+
+.clkbtn {
+    height: 50px;
+    width: 250px;
+    border-radius: 50px;
+    background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));
+    font-size: 18px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.invalid-feedback {
+    color: red;
+    font-size: 14px;
+}
+
+.content-section {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+@media screen and (max-width: 650px) {
+    .formcontainer {
+        width: 100%;
+    }
+
+    .ele {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .clkbtn {
+        height: 45px;
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .heading {
+        font-size: 24px;
+    }
+
+    .ele {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .clkbtn {
+        height: 45px;
+        font-size: 17px;
+    }
+}

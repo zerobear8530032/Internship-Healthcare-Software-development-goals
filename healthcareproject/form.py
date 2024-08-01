@@ -42,3 +42,23 @@ class ResetPasswordForm(FlaskForm):
     password = PasswordField("Password", validators=[DataRequired(), Length(min=8)])
     confirm_password = PasswordField("Confirm Password", validators=[DataRequired(), Length(min=8), EqualTo('password')])
     submit=SubmitField('Reset Password')
+
+
+
+class UpdateAccountForm(FlaskForm):
+    username = StringField("Username", validators=[DataRequired(), Length(min=3, max=25)])
+    email = StringField("Email", validators=[DataRequired(), Length(min=6), Email()])
+    picture=FileField("Update Profile Picture",validators=[FileAllowed(['jpg','png','jpeg'])])
+    submit = SubmitField("Update Details")
+
+    def validate_username(self, username):
+        if username.data != current_user.username:
+            user_exists = Registertable.query.filter_by(username=username.data).first()
+            if user_exists:
+                raise ValidationError('Username already taken.')
+
+    def validate_email(self, email):
+          if email.data != current_user.email:
+            email_exists = Registertable.query.filter_by(email=email.data).first()
+            if email_exists:
+                raise ValidationError('Email address already registered.')

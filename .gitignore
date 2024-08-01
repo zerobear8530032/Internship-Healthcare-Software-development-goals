@@ -14,3 +14,5 @@ __pycache__/
 # Other unwanted files or directories
 *.log
 *.tmp
+*searchapi.py
+

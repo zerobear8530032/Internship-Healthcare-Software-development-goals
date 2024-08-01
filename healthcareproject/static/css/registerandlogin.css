@@ -48,7 +48,7 @@ header {
 }
 
 .logcontainer {
-    height: 520px;
+    height: 500px;
     width: 500px;
     background-color: white;
     box-shadow: 8px 8px 20px rgb(128, 128, 128);
@@ -241,7 +241,7 @@ header {
 
     .btn {
         height: 50px;
-        width: 2000px;
+        width: 200px;
         /* margin: 20px auto; */
     }
     
@@ -252,7 +252,7 @@ header {
 
     .slider {
         height: 50px;
-        width: 200px;
+        width: 100px;
         left: 27px;
     }
     
@@ -291,7 +291,8 @@ header {
 .invalid-feedback {
     color: red;
 }
+
 .content-section{
-    color:rgb(199, 8, 8);
+    color:rgb(0, 0, 0);
     background-color: gainsboro;
 }

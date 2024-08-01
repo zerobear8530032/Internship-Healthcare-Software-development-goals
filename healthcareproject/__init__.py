@@ -3,7 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
-app = Flask(__name__)
+import pickle
+app = Flask(__name__, static_folder='static', static_url_path='')
 app.config["SECRET_KEY"] = "9e166102899e65f779885fafe818473a"
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
 db = SQLAlchemy(app)
@@ -19,7 +20,5 @@ app.config['MAIL_USE_TLS']=True
 app.config['MAIL_USERNAME']="saboorabdul627@gmail.com"
 app.config['MAIL_PASSWORD']="axcakapeekqjzpzm"
 mail = Mail(app)
-
-
 from healthcareproject import routes
 app.app_context().push()
