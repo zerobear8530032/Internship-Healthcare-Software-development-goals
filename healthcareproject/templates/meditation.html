@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation for Peace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://your-image-url.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Lora', serif;
+            margin: 20px 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+
+        .meditation-sessions {
+            margin: 20px 0;
+        }
+
+        .button {
+            background: #ffa500;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #ff8000;
+            transform: scale(1.05);
+        }
+
+        blockquote {
+            margin: 20px;
+            font-style: italic;
+            text-align: center;
+            border-left: 4px solid #ffa500;
+            padding-left: 10px;
+        }
+
+        .exercise {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .timer {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Meditation for Peace</h1>
+</header>
+
+<div class="container">
+    <p>Find your inner calm through our guided meditations.</p>
+    
+    <div class="meditation-sessions">
+        <h2>Types of Meditation Exercises</h2>
+        <div class="exercise">
+            <h3>Breath Awareness</h3>
+            <p>Focus on your breath and become aware of each inhale and exhale.</p>
+            <div class="timer" id="breath-timer">00:00</div>
+            <button class="button" onclick="startTimer('breath', 300)">Start 5-Minute Timer</button>
+        </div>
+        
+        <div class="exercise">
+            <h3>Body Scan</h3>
+            <p>Perform a mental scan of your body to release tension and stress.</p>
+            <div class="timer" id="scan-timer">00:00</div>
+            <button class="button" onclick="startTimer('scan', 600)">Start 10-Minute Timer</button>
+        </div>
+        
+        <div class="exercise">
+            <h3>Guided Visualization</h3>
+            <p>Imagine a peaceful place and immerse yourself in the experience.</p>
+            <div class="timer" id="visualization-timer">00:00</div>
+            <button class="button" onclick="startTimer('visualization', 900)">Start 15-Minute Timer</button>
+        </div>
+    </div>
+    
+    <blockquote>
+        <p>"Meditation is the secret of all growth in true life." - James Allen</p>
+    </blockquote>
+    
+    <iframe src="https://www.youtube.com/embed/your-video-url" width="100%" height="300px" allowfullscreen></iframe>
+</div>
+
+<footer>
+    <p>&copy; 2024 Meditation for Peace. All rights reserved.</p>
+</footer>
+
+<script>
+    function startTimer(type, duration) {
+        let timer = duration, minutes, seconds;
+        const timerDisplay = document.getElementById(`${type}-timer`);
+        const interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            timerDisplay.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(interval);
+                alert(type.charAt(0).toUpperCase() + type.slice(1) + " session is over!");
+                timerDisplay.textContent = "00:00";
+            }
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>

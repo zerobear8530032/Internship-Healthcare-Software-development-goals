@@ -25,7 +25,7 @@ body {
     overflow: auto; /* Allow scrolling if needed */
 }
 
-.container {
+.model {
     box-sizing: border-box;
     background-color: #fff;
     padding: 20px 40px;
@@ -108,11 +108,69 @@ button:hover {
 .resources a:hover {
     text-decoration: underline;
 }
+header {
+    background: #333;
+    width:100%;
+    color: white;
+    padding: 10px 0;
+}
 
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #ffa500;
+}
     </style>
 </head>
 <body>
-    <div class="container">
+    <header>
+        <div class="container">
+            <h1>Interactive AI</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('meditation') }}">Meditation</a></li>
+                    <li><a href="{{ url_for('moodtracking') }}">Mood Tracking</a></li>
+                    <li><a href="{{ url_for('counseling') }}">Counseling</a></li>
+                    <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+                    {%if current_user.is_authenticated%}
+                    <li><a href="{{ url_for('account') }}">Account</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {%else%}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {%endif%}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="model">
         <h1>Sentiment Analysis</h1>
         <form method="POST">
             <textarea name="text" placeholder="Enter your text here..."></textarea><br>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracking</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+    <style>
+        /* Add your existing styles here */
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #ffa500;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .hero {
+            background: #f4f4f4;
+            color: black;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .mood-tracking-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tool {
+            margin: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tool:hover {
+            transform: scale(1.05);
+        }
+
+        .mood-wheel {
+            width: 80%;
+            transition: transform 0.3s ease;
+        }
+
+        .mood-wheel:hover {
+            transform: rotate(10deg);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mood Tracking</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('meditation') }}">Meditation</a></li>
+                    <li><a href="{{ url_for('moodtracking') }}">Mood Tracking</a></li>
+                    <li><a href="{{ url_for('counseling') }}">Counseling</a></li>
+                    <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+                    {%if current_user.is_authenticated%}
+                    <li><a href="{{ url_for('account') }}">Account</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {%else%}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {%endif%}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Interactive AI Model</h2>
+            <p>Monitor your emotional well-being with our comprehensive AI/ML tracking tools Try Our Machine learning Model.</p>
+            <a href="{{url_for('model')}}" class="button">Get Started</a>
+        </section>
+        <section class="mood-tracking-content">
+
+            <div class="mood-tracking-intro">
+                <h3>Why Track Your Mood?</h3>
+                <p>Understanding your emotional patterns can help you manage stress, improve relationships, and enhance your overall well-being.</p>
+                <img src="https://img.freepik.com/free-vector/emotional-scale-with-arrow-from-green-red-face-icons_1308-54040.jpg?size=626&ext=jpg" alt="Mood Tracking" class="animated-image">
+            </div>
+            <div class="mood-tracking-tools">
+                <h3>Mood Tracking Tools</h3>
+                <div class="tool">
+                    <h4>Mood Journal</h4>
+                    <p>Keep a daily log of your emotions and identify patterns over time.</p>
+                    <img src="https://imgs.search.brave.com/2MCU3zN1bXQSzjt-mbLVAXM-nHZ7ioCCOTHBX2t5SW0/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFYNmpGU0ZQQ0wu/anBn" alt="Mood Journal" class="animated-image">
+                </div>
+                <div class="tool">
+                    <h4>Mood Graphs</h4>
+                    <p>Visualize your emotional trends with easy-to-understand graphs and charts.</p>
+                    <img src="https://imgs.search.brave.com/GH8kHWsgyCfrB6tVtqgn30WEGz3-G0oQv9O12jyZNJY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dGhlc3RvcnlncmFw/aC5jb20vYXNzZXRz/L2ZlYXR1cmUtc3Rh/dHMtNGM3YjlkY2Rl/ZmQzOTdhNjhlYjQ3/MWExYzBhZTVkMzIx/NzBlNWIxYWMwYTA1/MTAyZjFkZTM1ODE5/MjcwNjRkNy5wbmc" alt="Mood Graphs" class="animated-image">
+                </div>
+                <div class="tool">
+                    <h4>Mood Reminders</h4>
+                    <p>Receive reminders to check in on your mood throughout the day.</p>
+                    <img src="https://imgs.search.brave.com/iOqDiC70iWEr0244HNVs1aTLmS-PXFowbBdodIZQPIg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM2/ODUxNTUzMC9waG90/by9ub3RpZmljYXRp/b24uanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPWxqTExmRVNF/dmNfTlRxWExob1pv/M3g5aHkwVV92TEZD/Z1VNb0IxdVVKMms9" alt="Mood Reminders" class="animated-image">
+                </div>
+            </div>
+            <div class="mood-tracking-animation">
+                <h3>Interactive Mood Wheel</h3>
+                <p>Click on the sections of the wheel to log your current mood.</p>
+                <div class="wheel-container">
+                    <img src="https://imgs.search.brave.com/BA3lsgNkKP5LADvoEQ98YqeGv0Vhcgb6YO0Iz9mU2xU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YmV0dGVydXAuY29t/L2hzLWZzL2h1YmZz/L0Vtb3Rpb24tV2hl/ZWwtSS5qcGc_d2lk/dGg9OTAwJmhlaWdo/dD05MTUmbmFtZT1F/bm90aW9uLVdoZWVs/LUkuanBn" alt="Mood Wheel" class="mood-wheel animated-image">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Good Health and Well-being</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

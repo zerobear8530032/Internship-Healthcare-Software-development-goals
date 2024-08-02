@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Health and Well-being</title>
+    
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Good Health and Well-being</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('meditation') }}">Meditation</a></li>
+                    <li><a href="{{ url_for('moodtracking') }}">Mood Tracking</a></li>
+                    <li><a href="{{ url_for('counseling') }}">Counseling</a></li>
+                    <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+                    {%if current_user.is_authenticated%}
+                    <li><a href="{{ url_for('account') }}">Account</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {%else%}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {%endif%}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Welcome to Your Path to Wellness</h2>
+            <p>Explore our resources for a healthier, happier you.</p>
+            {%if current_user.is_authenticated%}
+            <h2>Welcome ! {{current_user.username}}</h2>
+            {%else%}
+            <a href="{{url_for('login')}}" class="button">Get Started</a>
+            {%endif%}
+           
+        </section>
+        <section class="features">
+            <div class="feature">
+                <img src="https://imgs.search.brave.com/KWMKotFD0zQY55SRDKVwTqbSXghMUg7Vw46lp-04j5g/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9m/dWxsLXNob3QtYWR1/bHQtbWVkaXRhdGlu/Z18yMy0yMTQ5NzEx/NTI1LmpwZz9zaXpl/PTYyNiZleHQ9anBn" alt="Meditation">
+                <h3>Meditation</h3>
+                <p>Find peace and mindfulness through guided meditation exercises.</p>
+                <a href="{{url_for('meditation')}}" class="button">Learn More</a>
+            </div>
+            <div class="feature">
+                <img src="https://imgs.search.brave.com/XKqY-dhbtE6Y8ukMHKQ0AknJQub89cVd66t4xiqrrrc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMxLm1ha2V1c2Vv/ZmltYWdlcy5jb20v/d29yZHByZXNzL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIxLzA3/L21vb2RmbG93LTEu/anBn" alt="Mood Tracking">
+                <h3>Mood Tracking</h3>
+                <p>Track your emotions and gain insights into your mental health.</p>
+                <a href="{{url_for('moodtracking')}}" class="button">Learn More</a>
+            </div>
+            <div class="feature">
+                <img src="https://imgs.search.brave.com/MdjR7_M9s_x1bzsxAMeVqwBStoLbfLf_I41VdqfJLWg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZHJ3ZWlsLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxNy8w/MS9oZWFsdGgtd2Vs/bG5lc3NfYmFsYW5j/ZWQtbGl2aW5nX3dl/bGxuZXNzLXRoZXJh/cGllc19ndWlkZWQt/aW1hZ2VyeS10aGVy/YXB5XzE0NDB4MTA4/MF80ODc0NTU2ODIt/NjAweDQ1MC5qcGVn" alt="Counseling">
+                <h3>Counseling</h3>
+                <p>Get professional support for your mental well-being.</p>
+                <a href="{{url_for('counseling')}}" class="button">Learn More</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Good Health and Well-being</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Contact Us</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('meditation') }}">Meditation</a></li>
+                    <li><a href="{{ url_for('moodtracking') }}">Mood Tracking</a></li>
+                    <li><a href="{{ url_for('counseling') }}">Counseling</a></li>
+                    <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+                    {%if current_user.is_authenticated%}
+                    <li><a href="{{ url_for('account') }}">Account</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {%else%}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {%endif%}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="content">
+            <h2>Get in Touch</h2>
+            <p>We are here to assist you with your mental health journey.</p>
+            <div class="contact-details">
+                <p><strong>Owner:</strong> Vaishnavi</p>
+                <p><strong>Email:</strong> <a href="mailto:vaishnavi.998887@gmail.com">vaishnavi.998887@gmail.com</a></p>
+                <p>If you have any queries regarding mental health issues and mood tracking, feel free to contact us.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Good Health and Well-being</p>
+    </footer>
+</body>
+</html>

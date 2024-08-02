@@ -1,0 +1,15 @@
+to use this project you need to ensure you have python installed :
+install all the packages listed in the requirement.txt using pip install 
+once you install the packages make sure the structure of files remain same 
+the healthcareproject is a user define package consists of all the files to execute the project ?
+templates folder contains all the web pages using html,css,js
+static folder contains all the external js, css
+model.py contains the file to create data base it shows the schema of the data base 
+form.py: this contains the form format and fields of the html forms 
+route this contains the logic and the redirects of each pages 
+instance folder contain the sql lite data base test.db
+notebooks contains the test and cleaning of model and the save models to be used again
+pickle : this the file which contains the saved model and extra resources like vectorizer for data transformation
+createdb.py: it create the data base if deleted by mistake 
+run.py : this file is the one file which execute the entire project in one go 
+

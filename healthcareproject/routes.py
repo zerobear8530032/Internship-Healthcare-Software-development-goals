@@ -23,7 +23,28 @@ from flask_wtf.csrf import generate_csrf
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("index.html")
+
+@app.route("/contactus")
+@login_required
+def contactus():
+    return render_template("contactus.html")
+
+@app.route("/counseling")
+@login_required
+def counseling():
+    return render_template("counseling.html")
+
+@app.route("/meditation")
+@login_required
+def meditation():
+    return render_template("meditation.html")
+@app.route("/moodtracking")
+@login_required
+def moodtracking():
+    return render_template("moodtracking.html")
+
+
 
 @app.route("/register", methods=['POST', 'GET'])
 def register():
@@ -329,7 +350,6 @@ def save_picture(form_picture):
     return picture_fn
 
 
-
 @app.route("/account",methods=['POST','GET'])
 @login_required
 def account():
@@ -354,8 +374,8 @@ def account():
 
 
 
-
 @app.route("/logout")
+@login_required
 def logout():
      logout_user()
      return redirect(url_for("home"))
