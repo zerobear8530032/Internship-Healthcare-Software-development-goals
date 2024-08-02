@@ -314,8 +314,8 @@ def  getresources(emotion):
         "health tips for staying well"
     ]
     }
-    api_key = 'AIzaSyC2sfEhQElHIjmGzd2P9Gq-aFbPnRigpNU'
-    cx = 'e1786b722786945da'
+    api_key = 'AIzaSyACMZngDA3wksh9jSuV70Cfz1RBTKTcAl0'
+    cx = '62b8d9f12b9ad4073'
     query = 'Artificial Intelligence'
 
     searchfor =random.choice(search_terms[emotion])
