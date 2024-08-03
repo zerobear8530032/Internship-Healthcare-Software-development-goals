@@ -13,3 +13,5 @@ pickle : this the file which contains the saved model and extra resources like v
 createdb.py: it create the data base if deleted by mistake 
 run.py : this file is the one file which execute the entire project in one go 
 
+note :
+currently project is working on the free api so it can exceeed the usage of api  make sure not to ovr use it 

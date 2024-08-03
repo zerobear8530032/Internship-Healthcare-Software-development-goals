@@ -80,15 +80,6 @@ def login():
 
 
 
-def google_search(query, api_key, cx):
-    url = 'https://www.googleapis.com/customsearch/v1'
-    params = {
-        'key': api_key,
-        'cx': cx,
-        'q': query
-    }
-    response = requests.get(url, params=params)
-    return response.json()
 
 
 def preprocess_text(text):
@@ -268,74 +259,90 @@ def predict_sentiment(text):
     else:
         return "I'm not sure how to respond. Please try again.", emotion
 
-
-def  getresources(emotion):
-    search_terms = {
-    0: [
-        "mental health support resources",
-        "coping strategies for stress",
-        "ways to improve mood",
-        "emotional support resources",
-        "self-care tips for tough times"
-    ],
-    1: [
-        "positivity and motivation tips",
-        "ways to stay positive",
-        "inspirational stories",
-        "positive affirmations",
-        "motivational articles"
-    ],
-    2: [
-        "general assistance resources",
-        "customer service best practices",
-        "helpful advice for users",
-        "how to provide effective support",
-        "guidance for user queries"
-    ],
-    3: [
-        "anger management techniques",
-        "ways to manage frustration",
-        "resources for controlling anger",
-        "strategies for anger relief",
-        "help with managing anger"
-    ],
-    4: [
-        "resources for managing sadness",
-        "comforting activities for emotional well-being",
-        "support for dealing with sadness",
-        "ways to find comfort in tough times",
-        "coping with feelings of sadness"
-    ],
-    5: [
-        "health tips and resources",
-        "latest health articles",
-        "health and wellness updates",
-        "valuable health information",
-        "health tips for staying well"
-    ]
+def google_search(query, api_key, cx):
+    url = 'https://www.googleapis.com/customsearch/v1'
+    params = {
+        'key': api_key,
+        'cx': cx,
+        'q': query
     }
-    api_key = 'AIzaSyACMZngDA3wksh9jSuV70Cfz1RBTKTcAl0'
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return {'error': 'Failed to fetch search results'}
+
+def getresources(emotion):
+    search_terms = {
+        0: [
+            "mental health support resources",
+            "coping strategies for stress",
+            "ways to improve mood",
+            "emotional support resources",
+            "self-care tips for tough times"
+        ],
+        1: [
+            "positivity and motivation tips",
+            "ways to stay positive",
+            "inspirational stories",
+            "positive affirmations",
+            "motivational articles"
+        ],
+        2: [
+            "general assistance resources",
+            "customer service best practices",
+            "helpful advice for users",
+            "how to provide effective support",
+            "guidance for user queries"
+        ],
+        3: [
+            "anger management techniques",
+            "ways to manage frustration",
+            "resources for controlling anger",
+            "strategies for anger relief",
+            "help with managing anger"
+        ],
+        4: [
+            "resources for managing sadness",
+            "comforting activities for emotional well-being",
+            "support for dealing with sadness",
+            "ways to find comfort in tough times",
+            "coping with feelings of sadness"
+        ],
+        5: [
+            "health tips and resources",
+            "latest health articles",
+            "health and wellness updates",
+            "valuable health information",
+            "health tips for staying well"
+        ]
+    }
+    api_key = 'AIzaSyC2sfEhQElHIjmGzd2P9Gq-aFbPnRigpNU'
     cx = '62b8d9f12b9ad4073'
-    searchfor =random.choice(search_terms[emotion])
-    searchresult=google_search(searchfor,api_key=api_key,cx=cx)
+    searchfor = random.choice(search_terms[emotion])
+    searchresult = google_search(searchfor, api_key, cx)
     return searchresult
+
 
 @app.route('/model', methods=['GET', 'POST'])
 def model():
     if request.method == 'POST':
-        # Get data from form
         text = request.form['text']
         
-        # Get reply based on prediction
-        reply, emotion = predict_sentiment(text)
-        resource=  getresources(emotion)
-        if 'error' in resource:
-            return render_template('model.html', reply=reply, text=text,resource=resource["error"])    
-
-        # Render template with reply
-        return render_template('model.html', reply=reply, text=text,resource=resource)    
-    return render_template('model.html', reply=None)
-
+        try:
+            reply, emotion = predict_sentiment(text)
+            resource = getresources(emotion)
+            
+            if 'error' in resource:
+                error_message = resource['error']
+                return render_template('model.html', reply=reply, text=text, resource=None, error=error_message)
+            else:
+                return render_template('model.html', reply=reply, text=text, resource=resource)
+        except Exception as e:
+            print(f"Error: {e}")
+            return render_template('model.html', reply="An error occurred.", text=text, resource=None, error=str(e))
+    
+    return render_template('model.html', reply=None, resource=None, error=None)
 
 
 def save_picture(form_picture):
