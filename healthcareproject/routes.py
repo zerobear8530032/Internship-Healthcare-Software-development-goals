@@ -316,8 +316,6 @@ def  getresources(emotion):
     }
     api_key = 'AIzaSyACMZngDA3wksh9jSuV70Cfz1RBTKTcAl0'
     cx = '62b8d9f12b9ad4073'
-    query = 'Artificial Intelligence'
-
     searchfor =random.choice(search_terms[emotion])
     searchresult=google_search(searchfor,api_key=api_key,cx=cx)
     return searchresult
@@ -331,6 +329,9 @@ def model():
         # Get reply based on prediction
         reply, emotion = predict_sentiment(text)
         resource=  getresources(emotion)
+        if 'error' in resource:
+            return render_template('model.html', reply=reply, text=text,resource=resource["error"])    
+
         # Render template with reply
         return render_template('model.html', reply=reply, text=text,resource=resource)    
     return render_template('model.html', reply=None)
